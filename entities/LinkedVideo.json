@@ -1,0 +1,67 @@
+{
+  "name": "LinkedVideo",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Video title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Video description"
+    },
+    "url": {
+      "type": "string",
+      "description": "Video URL from YouTube or TikTok"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "youtube",
+        "tiktok"
+      ],
+      "description": "The platform the video is hosted on"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Video thumbnail image URL"
+    },
+    "video_type": {
+      "type": "string",
+      "enum": [
+        "market_analysis",
+        "trade_review",
+        "strategy_explanation",
+        "live_commentary",
+        "educational",
+        "entertainment"
+      ],
+      "description": "Type of trading video"
+    },
+    "trading_session_id": {
+      "type": "string",
+      "description": "Related trading session ID"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Video tags"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published"
+      ],
+      "default": "published",
+      "description": "Video status"
+    }
+  },
+  "required": [
+    "title",
+    "url",
+    "platform"
+  ]
+}

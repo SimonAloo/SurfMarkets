@@ -1,0 +1,103 @@
+{
+  "name": "MarketSignal",
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string",
+      "description": "Trading symbol (e.g., BTC/USD)"
+    },
+    "signal_type": {
+      "type": "string",
+      "enum": [
+        "buy",
+        "sell",
+        "hold",
+        "strong_buy",
+        "strong_sell"
+      ],
+      "description": "Type of trading signal"
+    },
+    "confidence_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Confidence percentage"
+    },
+    "entry_price": {
+      "type": "number",
+      "description": "Recommended entry price"
+    },
+    "target_price": {
+      "type": "number",
+      "description": "Target price for profit"
+    },
+    "stop_loss": {
+      "type": "number",
+      "description": "Stop loss price"
+    },
+    "risk_reward_ratio": {
+      "type": "number",
+      "description": "Risk to reward ratio"
+    },
+    "timeframe": {
+      "type": "string",
+      "enum": [
+        "1m",
+        "5m",
+        "15m",
+        "1h",
+        "4h",
+        "1d",
+        "1w"
+      ],
+      "description": "Signal timeframe"
+    },
+    "indicators_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Technical indicators used"
+    },
+    "market_sentiment": {
+      "type": "string",
+      "enum": [
+        "extremely_fearful",
+        "fearful",
+        "neutral",
+        "greedy",
+        "extremely_greedy"
+      ],
+      "description": "Current market sentiment"
+    },
+    "signal_strength": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Signal strength rating"
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether signal is still active"
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "executed",
+        "missed",
+        "cancelled"
+      ],
+      "description": "Signal execution status"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional signal notes"
+    }
+  },
+  "required": [
+    "symbol",
+    "signal_type",
+    "confidence_level"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "TradingSession",
+  "type": "object",
+  "properties": {
+    "session_name": {
+      "type": "string",
+      "description": "Name of the trading session"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the trading session started"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the trading session ended"
+    },
+    "initial_balance": {
+      "type": "number",
+      "description": "Starting balance for the session"
+    },
+    "final_balance": {
+      "type": "number",
+      "description": "Ending balance for the session"
+    },
+    "profit_loss": {
+      "type": "number",
+      "description": "Total profit or loss for the session"
+    },
+    "profit_loss_percentage": {
+      "type": "number",
+      "description": "P&L as percentage"
+    },
+    "total_trades": {
+      "type": "number",
+      "description": "Number of trades executed"
+    },
+    "winning_trades": {
+      "type": "number",
+      "description": "Number of profitable trades"
+    },
+    "losing_trades": {
+      "type": "number",
+      "description": "Number of losing trades"
+    },
+    "win_rate": {
+      "type": "number",
+      "description": "Win rate percentage"
+    },
+    "strategy_used": {
+      "type": "string",
+      "description": "Trading strategy employed"
+    },
+    "market_conditions": {
+      "type": "string",
+      "enum": [
+        "bullish",
+        "bearish",
+        "sideways",
+        "volatile"
+      ],
+      "description": "Market condition during session"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Session notes and observations"
+    }
+  },
+  "required": [
+    "session_name",
+    "start_time",
+    "initial_balance"
+  ]
+  
+}
