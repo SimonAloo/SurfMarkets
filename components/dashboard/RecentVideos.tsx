@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { format } from "date-fns";
-import TiktokIcon from "../icons/TiktokIcon"; // Added TiktokIcon import
+import TiktokIcon from "../icons/TiktokIcon"; // Icon component for TikTok videos
 
 export default function RecentVideos({ videos, isLoading }) {
   const getVideoTypeColor = (type) => {
@@ -32,7 +32,7 @@ export default function RecentVideos({ videos, isLoading }) {
     }
   };
   
-  // New component for platform icon
+  // Component for rendering platform-specific icons
   const PlatformIcon = ({ platform, className }) => {
     if (platform === 'youtube') return <Youtube className={className} />;
     if (platform === 'tiktok') return <TiktokIcon className={className} />;
@@ -44,11 +44,11 @@ export default function RecentVideos({ videos, isLoading }) {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-white">
-            <Video className="w-5 h-5 text-cyan-400" /> {/* Changed icon to Video and color to cyan-400 */}
-            Recent Content {/* Changed title text */}
+            <Video className="w-5 h-5 text-cyan-400" />
+            Recent Content
           </CardTitle>
-          <Link to={createPageUrl("ContentStudio")}> {/* Changed link destination */}
-            <Button variant="ghost" size="sm" className="text-slate-400 hover:text-cyan-400"> {/* Changed hover color to cyan-400 */}
+          <Link to={createPageUrl("ContentStudio")}>
+            <Button variant="ghost" size="sm" className="text-slate-400 hover:text-cyan-400">
               Manage
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
@@ -76,37 +76,34 @@ export default function RecentVideos({ videos, isLoading }) {
                 className="flex items-start gap-3 p-3 rounded-lg bg-slate-800/30 border border-slate-700/50 hover:bg-slate-700/30 transition-colors group"
               >
                 <div className="relative">
-                  {/* Updated thumbnail logic and size */}
-                  <img 
-                    src={video.thumbnail_url || 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963e?w=400'} 
+                  <img
+                    src={video.thumbnail_url || 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963e?w=400'}
                     alt={video.title}
-                    className="w-24 h-16 object-cover rounded bg-slate-700" // Increased size
+                    className="w-24 h-16 object-cover rounded bg-slate-700"
                   />
                   <div className="absolute inset-0 bg-black/40 rounded flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Play className="w-6 h-6 text-white" /> {/* Increased play icon size */}
+                    <Play className="w-6 h-6 text-white" />
                   </div>
-                  {/* Added platform icon overlay */}
+                  {/* Platform icon overlay */}
                   <div className="absolute top-1 right-1 p-1 bg-black/50 rounded-full">
                     <PlatformIcon platform={video.platform} className="w-4 h-4 text-white" />
                   </div>
                 </div>
-                
+
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-white text-sm line-clamp-2 mb-2"> {/* Changed mb-1 to mb-2 */}
+                  <h4 className="font-medium text-white text-sm line-clamp-2 mb-2">
                     {video.title}
                   </h4>
-                  {/* Simplified content details: removed view/like counts, performance highlight */}
                   <div className="flex items-center gap-2 text-xs text-slate-400">
                     <Badge className={getVideoTypeColor(video.video_type)} size="sm">
                       {video.video_type?.replace('_', ' ')}
                     </Badge>
-                    <span>•</span> {/* Added separator */}
+                    <span>•</span>
                     <span>{format(new Date(video.created_date), "MMM d")}</span>
                   </div>
                 </div>
-                
-                {/* Changed video.youtube_url to video.url and hover color */}
-                {video.url && ( 
+
+                {video.url && (
                   <Button
                     variant="ghost"
                     size="icon"
@@ -120,13 +117,13 @@ export default function RecentVideos({ videos, isLoading }) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-8">
-            <Video className="w-12 h-12 text-slate-600 mx-auto mb-4" /> {/* Changed icon to Video */}
-            <p className="text-slate-400">No videos linked yet</p> {/* Changed text */}
-            <p className="text-slate-500 text-sm">Add your first video link</p> {/* Changed text */}
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
+            <div className="text-center py-8">
+              <Video className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+              <p className="text-slate-400">No videos linked yet</p>
+              <p className="text-slate-500 text-sm">Add your first video link</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  }
