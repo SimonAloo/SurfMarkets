@@ -16,6 +16,21 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { format } from "date-fns";
 
+export const getSignalColor = (signalType: string) => {
+  switch (signalType) {
+    case 'strong_buy':
+      return 'bg-green-500/20 text-green-400 border-green-500/30';
+    case 'buy':
+      return 'bg-green-500/10 text-green-400 border-green-500/20';
+    case 'strong_sell':
+      return 'bg-red-500/20 text-red-400 border-red-500/30';
+    case 'sell':
+      return 'bg-red-500/10 text-red-400 border-red-500/20';
+    default:
+      return 'bg-slate-500/10 text-slate-400 border-slate-500/20';
+  }
+};
+
 export default function ActiveSignals({ signals, isLoading, onRefresh }) {
   const getSignalIcon = (signalType) => {
     switch (signalType) {
@@ -27,21 +42,6 @@ export default function ActiveSignals({ signals, isLoading, onRefresh }) {
         return <TrendingDown className="w-4 h-4" />;
       default:
         return <Target className="w-4 h-4" />;
-    }
-  };
-
-  const getSignalColor = (signalType) => {
-    switch (signalType) {
-      case 'strong_buy':
-        return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'buy':
-        return 'bg-green-500/10 text-green-400 border-green-500/20';
-      case 'strong_sell':
-        return 'bg-red-500/20 text-red-400 border-red-500/30';
-      case 'sell':
-        return 'bg-red-500/10 text-red-400 border-red-500/20';
-      default:
-        return 'bg-slate-500/10 text-slate-400 border-slate-500/20';
     }
   };
 
